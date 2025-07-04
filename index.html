@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Visual Vibe Connector</title>
+    <title>Visual Vibe Connector v2.0</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Visual Vibe Connector</h1>
-        <p>Find the GIF connection between two actors!</p>
+    <!-- Main Application Container -->
+    <div id="app-container">
+        <div class="container">
+            <h1>Visual Vibe Connector</h1>
+            <p>Find the connections between any two actors!</p>
 
-        <div class="input-area">
-            <input id="actor1-input" type="text" placeholder="First Actor's Name">
-            <input id="actor2-input" type="text" placeholder="Second Actor's Name">
-        </div>
+            <div class="input-area">
+                <input id="actor1-input" type="text" placeholder="First Actor's Name">
+                <input id="actor2-input" type="text" placeholder="Second Actor's Name">
+            </div>
 
-        <button id="find-button">Find Connection</button>
+            <button id="find-button">Find Connection</button>
 
-        <div id="results-container">
-            <!-- GIFs will appear here! -->
+            <!-- Loading and API Counter Messages -->
+            <p id="message-area"></p>
+
+            <!-- Results will appear here, now scrollable! -->
+            <div class="results-wrapper">
+                <div id="results-container">
+                    <!-- Path will be dynamically generated here -->
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Rate Limit "Waiting Room" Container (hidden by default) -->
+    <div id="waiting-room-container" class="hidden">
+        <div class="container">
+            <h2>You've Got the Vibe! (A little too much)</h2>
+            <p>We've hit the hourly API limit. Please wait while it resets.</p>
+            <p id="timer-text">Requests will refill in: <span id="countdown">--:--</span></p>
+            
+            <p>While you wait, play our mini-game or watch a demo!</p>
+            <!-- Minigame will be rendered in this canvas -->
+            <canvas id="minigame-canvas"></canvas>
+
+            <h3>App Demo</h3>
+            <video width="100%" controls>
+                <!-- IMPORTANT: Replace this with a link to your demo video! -->
+                <source src="YOUR_DEMO_VIDEO_URL.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Kaboom.js for the minigame -->
+    <script src="https://unpkg.com/kaboom@3000.0.1/dist/kaboom.js"></script>
+    <!-- Our App's Brain -->
     <script src="script.js"></script>
 </body>
 </html>
